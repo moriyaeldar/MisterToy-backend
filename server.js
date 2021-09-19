@@ -5,6 +5,13 @@ const expressSession = require('express-session')
 const app = express()
 const http = require('http').createServer(app)
 
+
+
+const logger = require('./services/logger.service')
+
+http.listen(port, () => {
+    logger.info('Server is running on port: ' + port)
+})
 const session = expressSession({
     secret: 'coding is amazing',
     resave: false,
@@ -51,13 +58,3 @@ app.use('/api/toy', toyRoutes)
 app.use('/api/review', reviewRoutes)
 
 
-
-app.get('/**', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'))
-})
-
-const logger = require('./services/logger.service')
-
-http.listen(port, () => {
-    logger.info('Server is running on port: ' + port)
-})
