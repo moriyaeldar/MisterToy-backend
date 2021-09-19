@@ -9,9 +9,6 @@ const http = require('http').createServer(app)
 
 const logger = require('./services/logger.service')
 
-http.listen(port, () => {
-    logger.info('Server is running on port: ' + port)
-})
 const session = expressSession({
     secret: 'coding is amazing',
     resave: false,
@@ -24,7 +21,10 @@ app.use(session)
 app.use(express.static('public'))
 const port = process.env.PORT || 3030;
 app.get('/**', (req, res) => {
- res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+})
+http.listen(port, () => {
+    logger.info('Server is running on port: ' + port)
 })
 app.listen(port, () => {
  console.log(`App listening on port ${port}!`)
