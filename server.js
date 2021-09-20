@@ -5,7 +5,13 @@ const expressSession = require('express-session')
 const app = express()
 const http = require('http').createServer(app)
 
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
+app.use(session({
+  secret: 'foo',
+  store: MongoStore.create(options)
+}));
 
 const logger = require('./services/logger.service')
 
