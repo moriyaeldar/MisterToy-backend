@@ -10,12 +10,7 @@ const MongoStore = require('connect-mongo');
 
 
 // Express App Config
-const session = expressSession({
-    secret: 'coding is amazing',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }
-})
+var session = require('cookie-session');
 app.use(express.json())
 app.use(session)
 
