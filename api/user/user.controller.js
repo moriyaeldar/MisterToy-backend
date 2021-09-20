@@ -1,5 +1,6 @@
 const userService = require('./user.service')
 const logger = require('../../services/logger.service')
+const socketService = require('../../services/socket.service')
 
 async function getUser(req, res) {
     try {

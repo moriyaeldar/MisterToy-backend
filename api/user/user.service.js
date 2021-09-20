@@ -2,6 +2,7 @@
 const dbService = require('../../services/db.service')
 const logger = require('../../services/logger.service')
 const reviewService = require('../review/review.service')
+import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
 
 const ObjectId = require('mongodb').ObjectId
 
