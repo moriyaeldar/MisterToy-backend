@@ -18,7 +18,7 @@ const session = expressSession({
 })
 app.use(session({
   secret: 'foo',
-  store: MongoStore.create(options)
+  store: MongoStore.create()
 }));
 
 app.use(express.json())
