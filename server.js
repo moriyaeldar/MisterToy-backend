@@ -7,10 +7,6 @@ const http = require('http').createServer(app)
 
 const MongoStore = require('connect-mongo');
 
-app.use(session({
-  secret: 'foo',
-  store: MongoStore.create(options)
-}));
 
 const logger = require('./services/logger.service')
 
@@ -20,6 +16,10 @@ const session = expressSession({
     saveUninitialized: true,
     cookie: { secure: false }
 })
+app.use(session({
+  secret: 'foo',
+  store: MongoStore.create(options)
+}));
 
 app.use(express.json())
 app.use(session)
